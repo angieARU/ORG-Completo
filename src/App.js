@@ -1,23 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Header from './componentes/Header/Header.js';
 
 function App() {
+  //{Header() } // tambien se puede llamar al componente de estas dos maneras 
+    //  <Header></Header>//
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        hola mundo con react
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Aprendiendo React
-        </a>
-      </header>
+    <div >
+      
+      <Header/>
+      
     </div>
   );
 }
