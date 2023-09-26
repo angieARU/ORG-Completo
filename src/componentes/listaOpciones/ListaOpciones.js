@@ -1,5 +1,5 @@
 import "./ListaOpciones.css"
-const ListaOpciones = ()=>{
+const ListaOpciones = (props)=>{
 
 //metodo map para leer array -> arreglo.map((equipo,index)=>{
 //      return <option></option>
@@ -13,7 +13,6 @@ const ListaOpciones = ()=>{
         "Móvil",
         "Innovación y Gestión"
     ]
-  
 //------------------- solo usando option 
     // return <div className="listaOpciones">
     //     <label >
@@ -30,12 +29,17 @@ const ListaOpciones = ()=>{
     //     </select>
     //     </div>
 // -------------USANDO ARRAY Y MAP PARA LEER
+const manejarCambio=(e)=>{
+    console.log("cambio",e.target.value)
+    props.actualizarEquipo(e.target.value)
+}
 return <div className="listaOpciones">
         <label >
             Equipos
         </label>
-        <select>
-            { equipos.map((equipo,index)=> <option key={index} >{equipo}</option>)}
+        <select value={props.valor} onChange={manejarCambio}>
+            <option value="" disabled defaultValue="" hidden >Seleccionar Equipo</option>
+            { equipos.map((equipo,index)=> <option key={index} value={equipo}>{equipo}</option>)}
         </select>
         </div>
 }
