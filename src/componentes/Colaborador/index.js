@@ -1,4 +1,5 @@
 import "./Colaborador.css"
+import { TiDeleteOutline } from "react-icons/ti"
 //-------------------------------antes de cargar todos los datos
 // const Colaborador = () =>{
 //     return <div className="colaborador">
@@ -15,8 +16,9 @@ import "./Colaborador.css"
 //:::::::::::::DESPUES DE CARGAR TODOS LOS DATOS:::::::::::::::::::.
 const Colaborador = (props) =>{
     const {nombre,puesto,foto}=props.datos
-    const {colorPrimario}=props
+    const {colorPrimario,eliminarColaborador}=props 
     return <div className="colaborador">
+        < TiDeleteOutline className="eliminar" onClick={eliminarColaborador}/>
         <div className="encabezado" style={{backgroundColor:colorPrimario}}>
             <img src={foto} alt={nombre}/>
         </div>

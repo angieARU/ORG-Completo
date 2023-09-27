@@ -17,7 +17,35 @@ function App() {
       nombre: "Angela Rosales",
       puesto: "Desarrollador"
 
-    }])
+    },
+    {
+      equipo: "Programación",
+      foto: "https://github.com/angieARU.png",
+      nombre: "Angela Rosales",
+      puesto: "Desarrollador"
+
+    },{
+      equipo: "Data Science",
+      foto: "https://github.com/angieARU.png",
+      nombre: "Angela Rosales",
+      puesto: "Desarrollador"
+
+    },{
+      equipo: "Móvil",
+      foto: "https://github.com/angieARU.png",
+      nombre: "Angela Rosales",
+      puesto: "Desarrollador"
+
+    },{
+      equipo: "Innovación y Gestión",
+      foto: "https://github.com/angieARU.png",
+      nombre: "Angela Rosales",
+      puesto: "Desarrollador"
+
+    }
+  
+  
+  ])
   //ternario --> condicion ? seMuestra : noSeMuestra
 
 //--------------------- antes de ternarios----------------
@@ -42,10 +70,15 @@ function App() {
     //Spread Operator
     actualizarColaboradores([...colaboradores, colaborador])
   }
+
+  //eliminar colaborador
+  const eliminarColaborador=()=>{
+    console.log("Eliminar Colaborador")
+  }
 //lista de equipos
 const equipos =[
   {
-    titulo:"Programacion",
+    titulo:"Programación",
     colorPrimario:"#57C278",
     colorSecundario:"#D9F7E9"
   },
@@ -106,6 +139,7 @@ return (
               datos={equipo} 
               key={equipo.titulo}
               colaboradores={colaboradores.filter(colaborador=>colaborador.equipo===equipo.titulo)}
+              eliminarColaborador={eliminarColaborador}
             />
         })
       }
