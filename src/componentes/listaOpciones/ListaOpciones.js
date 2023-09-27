@@ -4,15 +4,7 @@ const ListaOpciones = (props)=>{
 //metodo map para leer array -> arreglo.map((equipo,index)=>{
 //      return <option></option>
 // })
-    const equipos =[
-        "Programacion",
-        "Frond End",
-        "Data Science",
-        "Devops",
-        "UX y Diseño",
-        "Móvil",
-        "Innovación y Gestión"
-    ]
+
 //------------------- solo usando option 
     // return <div className="listaOpciones">
     //     <label >
@@ -39,7 +31,7 @@ return <div className="listaOpciones">
         </label>
         <select value={props.valor} onChange={manejarCambio}>
             <option value="" disabled defaultValue="" hidden >Seleccionar Equipo</option>
-            { equipos.map((equipo,index)=> <option key={index} value={equipo}>{equipo}</option>)}
+            {props.equipos.map((equipo,index)=> <option key={index} value={equipo}>{equipo}</option>)}
         </select>
         </div>
 }
