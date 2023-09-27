@@ -15,10 +15,10 @@ import { TiDeleteOutline } from "react-icons/ti"
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::
 //:::::::::::::DESPUES DE CARGAR TODOS LOS DATOS:::::::::::::::::::.
 const Colaborador = (props) =>{
-    const {nombre,puesto,foto}=props.datos
+    const {nombre,puesto,foto,equipo,id}=props.datos
     const {colorPrimario,eliminarColaborador}=props 
     return <div className="colaborador">
-        < TiDeleteOutline className="eliminar" onClick={eliminarColaborador}/>
+        < TiDeleteOutline className="eliminar" onClick={()=> eliminarColaborador(id)}/>
         <div className="encabezado" style={{backgroundColor:colorPrimario}}>
             <img src={foto} alt={nombre}/>
         </div>
