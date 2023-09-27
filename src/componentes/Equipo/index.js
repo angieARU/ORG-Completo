@@ -1,11 +1,12 @@
 import "./Equipo.css"
 import Colaborador from "../Colaborador"
+import hexToRgba from 'hex-to-rgba';
 const Equipo =(props)=>{
 //destructuracion
 const {colorPrimario,colorSecundario,titulo}=props.datos
-const {colaboradores,eliminarColaborador}=props
+const {colaboradores,eliminarColaborador,ActualizarColor}=props
     const obj ={
-        backgroundColor:colorSecundario
+        backgroundColor: hexToRgba( colorPrimario, 0.6)
     }
 
   //  console.log(colaboradores.length>0)
@@ -14,6 +15,15 @@ const {colaboradores,eliminarColaborador}=props
     return <> 
     { colaboradores.length >0 && // solo muestra los que tienen contenido
         <section className="equipo" style={obj}>
+            <input 
+                type="color"
+                className="input-color"
+                value={colorPrimario}
+                onChange={(evento)=>{
+                    ActualizarColor(evento.target.value,titulo)
+                    console.log("target:",evento.target.value,titulo);
+                }}
+            />
         <h3 style={estiloTitulo}>{titulo}</h3>
         <div className="colaboradores">
 

@@ -46,6 +46,53 @@ function App() {
   
   
   ])
+//::::::::::::NUEVA LISTA DE EQUIPOS ESTRUCTURADA 
+const [equipos,actualizarEquipos]=useState([
+      {
+      titulo:"Programación",
+      colorPrimario:"#57C278",
+      colorSecundario:"#D9F7E9"
+    },
+    {
+      titulo:"Front End",
+      colorPrimario:"#82CFFA",
+      colorSecundario:"#E8F8FF"
+    
+    },
+    {
+      titulo:"Data Science",
+      colorPrimario:"#A6D157",
+      colorSecundario:"#F0F8E2"
+    
+    },
+    {
+      titulo:"Devops",
+      colorPrimario:"#E06B69",
+      colorSecundario:"#FDE7E8"
+    
+    },
+    {
+      titulo:"UX y Diseño",
+      colorPrimario:"#DB6EBF",
+      colorSecundario:"#FAE9F5"
+    
+    },
+    {
+      titulo:"Móvil",
+      colorPrimario:"#FFBA05",
+      colorSecundario:"#FFF5D9"
+    
+    },
+    {
+      titulo:"Innovación y Gestión",
+      colorPrimario:"#FF8A29",
+      colorSecundario:"#FFEEDF"
+    
+    }
+  
+])
+
+
   //ternario --> condicion ? seMuestra : noSeMuestra
 
 //--------------------- antes de ternarios----------------
@@ -75,50 +122,65 @@ function App() {
   const eliminarColaborador=()=>{
     console.log("Eliminar Colaborador")
   }
-//lista de equipos
-const equipos =[
-  {
-    titulo:"Programación",
-    colorPrimario:"#57C278",
-    colorSecundario:"#D9F7E9"
-  },
-  {
-    titulo:"Front End",
-    colorPrimario:"#82CFFA",
-    colorSecundario:"#E8F8FF"
-  
-  },
-  {
-    titulo:"Data Science",
-    colorPrimario:"#A6D157",
-    colorSecundario:"#F0F8E2"
-  
-  },
-  {
-    titulo:"Devops",
-    colorPrimario:"#E06B69",
-    colorSecundario:"#FDE7E8"
-  
-  },
-  {
-    titulo:"UX y Diseño",
-    colorPrimario:"#DB6EBF",
-    colorSecundario:"#FAE9F5"
-  
-  },
-  {
-    titulo:"Móvil",
-    colorPrimario:"#FFBA05",
-    colorSecundario:"#FFF5D9"
-  
-  },
-  {
-    titulo:"Innovación y Gestión",
-    colorPrimario:"#FF8A29",
-    colorSecundario:"#FFEEDF"
-  
+//Actualizar color de Equipo
+const ActualizarColor=(color,titulo)=>{
+  console.log("actualizar:",color,titulo)
+  const equiposActualizados =equipos.map((equipo)=>{
+    if(equipo.titulo === titulo){
+      equipo.colorPrimario = color
+    }
+    return equipo
   }
-]
+  )
+  actualizarEquipos(equiposActualizados);
+
+}
+//lista de equipos ---- antes de cambiar color
+// const equipos =[
+//   {
+//     titulo:"Programación",
+//     colorPrimario:"#57C278",
+//     colorSecundario:"#D9F7E9"
+//   },
+//   {
+//     titulo:"Front End",
+//     colorPrimario:"#82CFFA",
+//     colorSecundario:"#E8F8FF"
+  
+//   },
+//   {
+//     titulo:"Data Science",
+//     colorPrimario:"#A6D157",
+//     colorSecundario:"#F0F8E2"
+  
+//   },
+//   {
+//     titulo:"Devops",
+//     colorPrimario:"#E06B69",
+//     colorSecundario:"#FDE7E8"
+  
+//   },
+//   {
+//     titulo:"UX y Diseño",
+//     colorPrimario:"#DB6EBF",
+//     colorSecundario:"#FAE9F5"
+  
+//   },
+//   {
+//     titulo:"Móvil",
+//     colorPrimario:"#FFBA05",
+//     colorSecundario:"#FFF5D9"
+  
+//   },
+//   {
+//     titulo:"Innovación y Gestión",
+//     colorPrimario:"#FF8A29",
+//     colorSecundario:"#FFEEDF"
+  
+//   }
+// ]
+
+
 
 return (
   <div >
@@ -140,6 +202,7 @@ return (
               key={equipo.titulo}
               colaboradores={colaboradores.filter(colaborador=>colaborador.equipo===equipo.titulo)}
               eliminarColaborador={eliminarColaborador}
+              ActualizarColor={ActualizarColor}
             />
         })
       }
