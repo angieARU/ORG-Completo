@@ -1,5 +1,7 @@
 import "./Colaborador.css"
-import { TiDeleteOutline } from "react-icons/ti"
+import { TiDeleteOutline} from "react-icons/ti"   
+import { AiOutlineHeart,AiFillHeart} from "react-icons/ai" 
+
 //-------------------------------antes de cargar todos los datos
 // const Colaborador = () =>{
 //     return <div className="colaborador">
@@ -15,16 +17,21 @@ import { TiDeleteOutline } from "react-icons/ti"
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::
 //:::::::::::::DESPUES DE CARGAR TODOS LOS DATOS:::::::::::::::::::.
 const Colaborador = (props) =>{
-    const {nombre,puesto,foto,equipo,id}=props.datos
-    const {colorPrimario,eliminarColaborador}=props 
+    const {nombre,puesto,foto,equipo,id,fav}=props.datos
+    const {colorPrimario,eliminarColaborador,like}=props 
+
+
     return <div className="colaborador">
-        < TiDeleteOutline className="eliminar" onClick={()=> eliminarColaborador(id)}/>
+        < TiDeleteOutline color="green" className="eliminar" onClick={()=> eliminarColaborador(id)}/>
         <div className="encabezado" style={{backgroundColor:colorPrimario}}>
             <img src={foto} alt={nombre}/>
         </div>
         <div className="info">
                 <h4>{nombre}</h4>
                 <h5>{puesto}</h5>
+                {fav ? <AiFillHeart color="red" onClick={()=>like(id)}/> : <AiOutlineHeart onClick={()=>like(id)}/>}
+                
+                
         </div>
     </div>
 }

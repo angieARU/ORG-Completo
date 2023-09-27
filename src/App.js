@@ -17,7 +17,8 @@ function App() {
       equipo: "Front End",
       foto: "https://github.com/angieARU.png",
       nombre: "Angela Rosales",
-      puesto: "Desarrollador"
+      puesto: "Desarrollador",
+      fav:true
 
     },
     {
@@ -25,28 +26,32 @@ function App() {
       equipo: "Programación",
       foto: "https://github.com/angieARU.png",
       nombre: "Angela Rosales",
-      puesto: "Desarrollador"
+      puesto: "Desarrollador",
+      fav:false
 
     },{
       id: uuid(),
       equipo: "Data Science",
       foto: "https://github.com/angieARU.png",
       nombre: "Angela Rosales",
-      puesto: "Desarrollador"
+      puesto: "Desarrollador",
+      fav:false
 
     },{
       id: uuid(),
       equipo: "Móvil",
       foto: "https://github.com/angieARU.png",
       nombre: "Angela Rosales",
-      puesto: "Desarrollador"
+      puesto: "Desarrollador",
+      fav:false
 
     },{
       id: uuid(),
       equipo: "Innovación y Gestión",
       foto: "https://github.com/angieARU.png",
       nombre: "Angela Rosales",
-      puesto: "Desarrollador"
+      puesto: "Desarrollador",
+      fav:false
 
     }
   
@@ -200,7 +205,18 @@ const crearEquipo =(nuevoEquipo)=>{
   
 //   }
 // ]
+//hacer like
 
+const like=(id)=>{
+  console.log(like)
+  const colaboradoresActualizados=colaboradores.map((colaborador)=>{
+      if(colaborador.id===id){
+        colaborador.fav = !colaborador.fav
+      }
+      return colaborador
+  })
+  actualizarColaboradores(colaboradoresActualizados)
+}
 
 
 return (
@@ -225,6 +241,7 @@ return (
               colaboradores={colaboradores.filter(colaborador=>colaborador.equipo===equipo.titulo)}
               eliminarColaborador={eliminarColaborador}
               ActualizarColor={ActualizarColor}
+              like={like}
             />
         })
       }
