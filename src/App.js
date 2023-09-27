@@ -4,12 +4,20 @@ import Header from './componentes/Header/Header.js';
 import Formulario from './componentes/formulario/Formulario';
 import MiOrg from './componentes/MiOrg';
 import Equipo from './componentes/Equipo';
+import Footer from './componentes/footer';
 
 
 function App() {
   //{Header() } // tambien se puede llamar al componente de estas dos maneras 
     //  <Header></Header>//
     const [mostrarFormulario,actualizarMostrar]= useState(false)
+    const [colaboradores,actualizarColaboradores]=useState([{
+      equipo: "Front End",
+      foto: "https://github.com/angieARU.png",
+      nombre: "Angela Rosales",
+      puesto: "Desarrollador"
+
+    }])
   //ternario --> condicion ? seMuestra : noSeMuestra
 
 //--------------------- antes de ternarios----------------
@@ -28,7 +36,12 @@ function App() {
   const cambiarMostrar =()=>{
     actualizarMostrar(!mostrarFormulario)
   }
-  // lista colaboradores
+  // registrar colaboradores
+  const registrarColaborador=(colaborador)=>{
+    console.log("nuevo",colaborador)
+    //Spread Operator
+    actualizarColaboradores([...colaboradores, colaborador])
+  }
 //lista de equipos
 const equipos =[
   {
@@ -81,14 +94,22 @@ return (
     {/*mostrarFormulario === true ? <Formulario/> : <div></div>*/} 
       {// si mostrarFormulario es igual a true va a mostrar el formulario y si no pues muestra el div vacio
       }
-      {mostrarFormulario && <Formulario equipos={equipos.map((equipo)=>equipo.titulo)}/>}
-    <MiOrg cambiarMostrar={cambiarMostrar}/>
+      {mostrarFormulario && <Formulario 
+        equipos={equipos.map((equipo)=>equipo.titulo)}
+        registrarColaborador={registrarColaborador}
+        />}
+        <MiOrg cambiarMostrar={cambiarMostrar}/>
       {
         equipos.map((equipo) =>{
        //   console.log(equipo)
-          return <Equipo datos={equipo} key={equipo.titulo}/>
+          return <Equipo 
+              datos={equipo} 
+              key={equipo.titulo}
+              colaboradores={colaboradores.filter(colaborador=>colaborador.equipo===equipo.titulo)}
+            />
         })
       }
+      <Footer/>
     
   </div>
 );
